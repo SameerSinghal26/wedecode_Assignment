@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Company Data Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #404040;
+        }
+
+        .header h1 {
+            color: #90caf9;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            background: #2d2d2d;
+            border: 1px solid #404040;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #b0b0b0;
+            transition: all 0.3s;
+        }
+
+        .nav-tab:hover {
+            background: #3d3d3d;
+            border-color: #90caf9;
+            color: #90caf9;
+        }
+
+        .nav-tab.active {
+            background: #90caf9;
+            color: #1a1a1a;
+            border-color: #90caf9;
+        }
+
+        .content-section {
+            display: none;
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 1px solid #404040;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #3d3d3d;
+            color: #e0e0e0;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #505050;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #90caf9;
+        }
+
+        .stat-card p {
+            font-size: 1.1em;
+            color: #b0b0b0;
+        }
+
+        .companies-grid, .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #3d3d3d;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #505050;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #90caf9;
+        }
+
+        .card h3 {
+            color: #90caf9;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .card .tagline {
+            color: #81c784;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .card .info {
+            color: #b0b0b0;
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge.industry {
+            background: #424242;
+            color: #90caf9;
+            border: 1px solid #505050;
+        }
+
+        .badge.pricing {
+            background: #424242;
+            color: #81c784;
+            border: 1px solid #505050;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: #90caf9;
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #64b5f6;
+        }
+
+        .btn-danger {
+            background: #ef5350;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #e53935;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #505050;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border 0.3s;
+            background: #3d3d3d;
+            color: #e0e0e0;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #90caf9;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #90caf9;
+            font-size: 1.2em;
+        }
+
+        .spinner {
+            border: 4px solid #3d3d3d;
+            border-top: 4px solid #90caf9;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #505050;
+            border-radius: 8px;
+            font-size: 1.1em;
+            background: #3d3d3d;
+            color: #e0e0e0;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #90caf9;
+        }
+
+        .card-actions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #505050;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #2d2d2d;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #505050;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #505050;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: #90caf9;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #b0b0b0;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ef5350;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .company-details {
+            margin-bottom: 30px;
+        }
+
+        .company-details .detail-row {
+            margin: 15px 0;
+            color: #b0b0b0;
+        }
+
+        .company-details .detail-row strong {
+            color: #90caf9;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .company-description {
+            background: #3d3d3d;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #e0e0e0;
+            line-height: 1.6;
+            border-left: 4px solid #90caf9;
+        }
+
+        .products-section {
+            margin-top: 30px;
+        }
+
+        .products-section h3 {
+            color: #90caf9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #505050;
+        }
+
+        .product-item {
+            background: #3d3d3d;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #505050;
+            transition: border-color 0.3s;
+        }
+
+        .product-item:hover {
+            border-color: #81c784;
+        }
+
+        .product-item h4 {
+            color: #81c784;
+            margin-bottom: 12px;
+        }
+
+        .product-detail {
+            margin: 10px 0;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        .product-detail strong {
+            color: #e0e0e0;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .product-features {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-line;
+            line-height: 1.8;
+        }
+
+        .success {
+            background: #2a5d2a;
+            color: #a5d6a7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #81c784;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .pagination button {
+            padding: 10px 15px;
+            background: #3d3d3d;
+            color: #e0e0e0;
+            border: 1px solid #505050;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #90caf9;
+            color: #1a1a1a;
+            border-color: #90caf9;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pagination .page-info {
+            color: #b0b0b0;
+            margin: 0 15px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            color: #90caf9;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #2d2d2d;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #505050;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #505050;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: #90caf9;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #b0b0b0;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ef5350;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .company-details {
+            margin-bottom: 30px;
+        }
+
+        .company-details .detail-row {
+            margin: 15px 0;
+            color: #b0b0b0;
+        }
+
+        .company-details .detail-row strong {
+            color: #90caf9;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .company-description {
+            background: #3d3d3d;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #e0e0e0;
+            line-height: 1.6;
+            border-left: 4px solid #90caf9;
+        }
+
+        .products-section {
+            margin-top: 30px;
+        }
+
+        .products-section h3 {
+            color: #90caf9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #505050;
+        }
+
+        .product-item {
+            background: #3d3d3d;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #505050;
+            transition: border-color 0.3s;
+        }
+
+        .product-item:hover {
+            border-color: #81c784;
+        }
+
+        .product-item h4 {
+            color: #81c784;
+            margin-bottom: 12px;
+        }
+
+        .product-detail {
+            margin: 10px 0;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        .product-detail strong {
+            color: #e0e0e0;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .product-features {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-line;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Startup Company Data Manager</h1>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
+            <button class="nav-tab" onclick="showTab('companies')">Companies</button>
+            <button class="nav-tab" onclick="showTab('products')">Products</button>
+            <button class="nav-tab" onclick="showTab('add-company')">Add Company</button>
+            <button class="nav-tab" onclick="showTab('add-product')">Add Product</button>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="content-section active">
+            <h2 style="margin-bottom: 20px; color: #90caf9;">Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="total-companies">0</h3>
+                    <p>Total Companies</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="total-products">0</h3>
+                    <p>Total Products</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="total-industries">0</h3>
+                    <p>Industries</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="loadData()">Load Data</button>
+        </div>
+
+        <!-- Companies Section -->
+        <div id="companies" class="content-section">
+            <div class="section-header">
+                <h2>All Companies</h2>
+                <button class="btn btn-danger" onclick="deleteAllCompanies()">Delete All Companies</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="company-search" placeholder="Search companies..." onkeyup="searchCompanies()">
+            </div>
+            <div id="companies-list" class="companies-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading companies...
+                </div>
+            </div>
+            <div id="companies-pagination" class="pagination"></div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="content-section">
+            <div class="section-header">
+                <h2>All Products</h2>
+                <button class="btn btn-danger" onclick="deleteAllProducts()">Delete All Products</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="product-search" placeholder="Search products..." onkeyup="searchProducts()">
+            </div>
+            <div id="products-list" class="products-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading products...
+                </div>
+            </div>
+            <div id="products-pagination" class="pagination"></div>
+        </div>
+
+        <!-- Add Company Section -->
+        <div id="add-company" class="content-section">
+            <h2 style="margin-bottom: 20px; color: #90caf9;">Create New Company</h2>
+            <form id="company-form" onsubmit="createCompany(event)">
+                <div class="form-group">
+                    <label>Company Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Tagline * (max 100 characters)</label>
+                    <input type="text" name="tagline" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                    <label>Description * (min 50 characters)</label>
+                    <textarea name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Industry *</label>
+                    <select name="industry" required>
+                        <option value="">Select Industry</option>
+                        <option value="FinTech">FinTech</option>
+                        <option value="HealthTech">HealthTech</option>
+                        <option value="EdTech">EdTech</option>
+                        <option value="E-commerce">E-commerce</option>
+                        <option value="SaaS">SaaS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Founded Year *</label>
+                    <input type="number" name="founded_year" min="1900" max="2025" required>
+                </div>
+                <div class="form-group">
+                    <label>Employee Count *</label>
+                    <input type="number" name="employee_count" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Headquarters * (City, Country)</label>
+                    <input type="text" name="headquarters" placeholder="Delhi, India" required>
+                </div>
+                <div class="form-group">
+                    <label>Website URL</label>
+                    <input type="text" name="website_url" placeholder="www.example.com">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Company</button>
+            </form>
+            <div id="company-form-message"></div>
+        </div>
+
+        <!-- Add Product Section -->
+        <div id="add-product" class="content-section">
+            <h2 style="margin-bottom: 20px; color: #90caf9;">Create New Product</h2>
+            <form id="product-form" onsubmit="createProduct(event)">
+                <div class="form-group">
+                    <label>Select Company *</label>
+                    <select name="company_id" id="product-company-select" required>
+                        <option value="">Loading companies...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Target Audience *</label>
+                    <input type="text" name="target_audience" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label>Key Features * (bullet points)</label>
+                    <textarea name="key_features" placeholder="• Feature 1&#10;• Feature 2&#10;• Feature 3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pricing Model *</label>
+                    <select name="pricing_model" required>
+                        <option value="">Select Pricing Model</option>
+                        <option value="Free">Free</option>
+                        <option value="Freemium">Freemium</option>
+                        <option value="Subscription">Subscription</option>
+                        <option value="Enterprise">Enterprise</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Product</button>
+            </form>
+            <div id="product-form-message"></div>
+        </div>
+    </div>
+
+    <!-- Company Details Modal -->
+    <div id="companyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-company-name">Company Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body-content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading company details...
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Update Company Modal -->
+    <div id="updateCompanyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Company</h2>
+                <button class="modal-close" onclick="closeUpdateCompanyModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="update-company-form" onsubmit="updateCompanySubmit(event)">
+                    <input type="hidden" id="update-company-id">
+                    <div class="form-group">
+                        <label>Company Name *</label>
+                        <input type="text" id="update-company-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tagline * (max 100 characters)</label>
+                        <input type="text" id="update-company-tagline" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="update-company-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Industry *</label>
+                        <select id="update-company-industry" required>
+                            <option value="">Select Industry</option>
+                            <option value="FinTech">FinTech</option>
+                            <option value="HealthTech">HealthTech</option>
+                            <option value="EdTech">EdTech</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="SaaS">SaaS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Founded Year *</label>
+                        <input type="number" id="update-company-founded" min="1900" max="2025" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Employee Count *</label>
+                        <input type="number" id="update-company-employees" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Headquarters *</label>
+                        <input type="text" id="update-company-headquarters" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Website URL</label>
+                        <input type="text" id="update-company-website">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Company</button>
+                    <button type="button" class="btn btn-danger" onclick="closeUpdateCompanyModal()">Cancel</button>
+                </form>
+                <div id="update-company-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Product Modal -->
+    <div id="updateProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Product</h2>
+                <button class="modal-close" onclick="closeUpdateProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="update-product-form" onsubmit="updateProductSubmit(event)">
+                    <input type="hidden" id="update-product-id">
+                    <div class="form-group">
+                        <label>Product Name *</label>
+                        <input type="text" id="update-product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="update-product-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Audience *</label>
+                        <input type="text" id="update-product-audience" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Features *</label>
+                        <textarea id="update-product-features" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Pricing Model *</label>
+                        <select id="update-product-pricing" required>
+                            <option value="">Select Pricing Model</option>
+                            <option value="Free">Free</option>
+                            <option value="Freemium">Freemium</option>
+                            <option value="Subscription">Subscription</option>
+                            <option value="Enterprise">Enterprise</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                    <button type="button" class="btn btn-danger" onclick="closeUpdateProductModal()">Cancel</button>
+                </form>
+                <div id="update-product-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const API_URL = 'http://127.0.0.1:8000';
+        let allCompanies = [];
+        let allProducts = [];
+        let currentCompanyPage = 1;
+        let currentProductPage = 1;
+        let companiesPerPage = 10;
+        let productsPerPage = 10;
+        let filteredCompanies = [];
+        let filteredProducts = [];
+        
+
+        // Show/Hide tabs
+        function showTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'dashboard') loadDashboard();
+            if (tabName === 'companies') {
+                currentCompanyPage = 1;
+                loadCompanies();
+            }
+            if (tabName === 'products') {
+                currentProductPage = 1;
+                loadProducts();
+            }
+            if (tabName === 'add-product') loadCompaniesForSelect();
+        }
+
+        // Open Update Company Modal
+        async function openUpdateCompanyModal(companyId) {
+            console.log('Opening update modal for company:', companyId);
+            const modal = document.getElementById('updateCompanyModal');
+            
+            if (!modal) {
+                console.error('Update company modal not found!');
+                alert('Error: Update modal not found');
+                return;
+            }
+            
+            modal.classList.add('active');
+
+            try {
+                console.log('Fetching company data...');
+                const response = await fetch(`${API_URL}/companies/${companyId}`);
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const company = await response.json();
+                console.log('Company data loaded:', company);
+
+                document.getElementById('update-company-id').value = company.id;
+                document.getElementById('update-company-name').value = company.name;
+                document.getElementById('update-company-tagline').value = company.tagline;
+                document.getElementById('update-company-description').value = company.description;
+                document.getElementById('update-company-industry').value = company.industry;
+                document.getElementById('update-company-founded').value = company.founded_year;
+                document.getElementById('update-company-employees').value = company.employee_count;
+                document.getElementById('update-company-headquarters').value = company.headquarters;
+                document.getElementById('update-company-website').value = company.website_url || '';
+                
+                console.log('Form populated successfully');
+            } catch (error) {
+                console.error('Error loading company:', error);
+                alert('Error loading company: ' + error.message);
+                closeUpdateCompanyModal();
+            }
+        }
+
+        // Close Update Company Modal
+        function closeUpdateCompanyModal() {
+            console.log('Closing update company modal');
+            const modal = document.getElementById('updateCompanyModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            document.getElementById('update-company-message').innerHTML = '';
+        }
+
+        // Open Update Product Modal
+        async function openUpdateProductModal(productId) {
+            console.log('Opening update modal for product:', productId);
+            const modal = document.getElementById('updateProductModal');
+            
+            if (!modal) {
+                console.error('Update product modal not found!');
+                alert('Error: Update modal not found');
+                return;
+            }
+            
+            modal.classList.add('active');
+
+            try {
+                console.log('Fetching product data...');
+                const response = await fetch(`${API_URL}/products/${productId}`);
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const product = await response.json();
+                console.log('Product data loaded:', product);
+
+                document.getElementById('update-product-id').value = product.id;
+                document.getElementById('update-product-name').value = product.name;
+                document.getElementById('update-product-description').value = product.description;
+                document.getElementById('update-product-audience').value = product.target_audience;
+                document.getElementById('update-product-features').value = product.key_features;
+                document.getElementById('update-product-pricing').value = product.pricing_model;
+                
+                console.log('Form populated successfully');
+            } catch (error) {
+                console.error('Error loading product:', error);
+                alert('Error loading product: ' + error.message);
+                closeUpdateProductModal();
+            }
+        }
+
+        // Close Update Product Modal
+        function closeUpdateProductModal() {
+            console.log('Closing update product modal');
+            const modal = document.getElementById('updateProductModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            document.getElementById('update-product-message').innerHTML = '';
+        }
+
+        // Load Dashboard
+        async function loadDashboard() {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                document.getElementById('total-companies').textContent = data.statistics.total_companies;
+                document.getElementById('total-products').textContent = data.statistics.total_products;
+                
+                const companiesRes = await fetch(`${API_URL}/companies?per_page=100`);  // Changed from 1000 to 100
+                if (!companiesRes.ok) {
+                    throw new Error(`HTTP error! status: ${companiesRes.status}`);
+                }
+                const companiesData = await companiesRes.json();
+                const companies = companiesData.companies || [];
+                const industries = new Set(companies.map(c => c.industry));
+                document.getElementById('total-industries').textContent = industries.size;
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // Load Companies
+        async function loadCompanies() {
+            try {
+                const response = await fetch(`${API_URL}/companies?per_page=100`);  // Changed from 1000 to 100
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Companies data:', data); // Debug log
+                allCompanies = data.companies || [];
+                filteredCompanies = allCompanies;
+                displayCompanies();
+            } catch (error) {
+                console.error('Error loading companies:', error);
+                document.getElementById('companies-list').innerHTML = 
+                    '<div class="error">Error loading companies: ' + error.message + '</div>';
+            }
+        }
+
+        // Display Companies with Pagination
+        function displayCompanies() {
+            const container = document.getElementById('companies-list');
+            const totalPages = Math.ceil(filteredCompanies.length / companiesPerPage);
+            const startIndex = (currentCompanyPage - 1) * companiesPerPage;
+            const endIndex = startIndex + companiesPerPage;
+            const displayCompanies = filteredCompanies.slice(startIndex, endIndex);
+
+            if (filteredCompanies.length === 0) {
+                container.innerHTML = '<p>No companies found.</p>';
+                document.getElementById('companies-pagination').innerHTML = '';
+                return;
+            }
+            
+            container.innerHTML = displayCompanies.map(company => `
+                <div class="card">
+                    <h3>${company.name}</h3>
+                    <p class="tagline">${company.tagline}</p>
+                    <div class="info"><strong>Industry:</strong> <span class="badge industry">${company.industry}</span></div>
+                    <div class="info"><strong>Founded:</strong> ${company.founded_year}</div>
+                    <div class="info"><strong>Employees:</strong> ${company.employee_count}</div>
+                    <div class="info"><strong>Location:</strong> ${company.headquarters}</div>
+                    ${company.website_url ? `<div class="info"><strong>Website:</strong> ${company.website_url}</div>` : ''}
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="viewCompanyDetails('${company.id}')">View Details</button>
+                        <button class="btn btn-primary" onclick="openUpdateCompanyModal('${company.id}')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteCompany('${company.id}', '${company.name.replace(/'/g, "\\'")}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Display Pagination
+            displayPagination('companies', currentCompanyPage, totalPages, changeCompanyPage);
+        }
+
+        // Change Company Page
+        function changeCompanyPage(page) {
+            currentCompanyPage = page;
+            displayCompanies();
+            document.getElementById('companies-list').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Search Companies
+        function searchCompanies() {
+            const query = document.getElementById('company-search').value.toLowerCase();
+            filteredCompanies = allCompanies.filter(company => 
+                company.name.toLowerCase().includes(query) ||
+                company.industry.toLowerCase().includes(query) ||
+                company.tagline.toLowerCase().includes(query)
+            );
+            currentCompanyPage = 1;
+            displayCompanies();
+        }
+
+        // Load Products
+        async function loadProducts() {
+            try {
+                // Load both products and companies to get company names
+                const [productsResponse, companiesResponse] = await Promise.all([
+                    fetch(`${API_URL}/products?per_page=100`),
+                    fetch(`${API_URL}/companies?per_page=100`)
+                ]);
+                
+                if (!productsResponse.ok || !companiesResponse.ok) {
+                    throw new Error(`HTTP error! status: ${productsResponse.status}`);
+                }
+                
+                const productsData = await productsResponse.json();
+                const companiesData = await companiesResponse.json();
+                
+                // Create company lookup map
+                const companyMap = {};
+                (companiesData.companies || []).forEach(company => {
+                    companyMap[company.id] = company.name;
+                });
+                
+                // Add company names to products
+                allProducts = (productsData.products || []).map(product => ({
+                    ...product,
+                    company_name: companyMap[product.company_id] || 'Unknown Company'
+                }));
+                
+                filteredProducts = allProducts;
+                displayProducts();
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('products-list').innerHTML = 
+                    '<div class="error">Error loading products: ' + error.message + '</div>';
+            }
+        }
+
+        // Display Products with Pagination
+        function displayProducts() {
+            const container = document.getElementById('products-list');
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            const startIndex = (currentProductPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const displayProducts = filteredProducts.slice(startIndex, endIndex);
+
+            if (filteredProducts.length === 0) {
+                container.innerHTML = '<p>No products found.</p>';
+                document.getElementById('products-pagination').innerHTML = '';
+                return;
+            }
+            
+            container.innerHTML = displayProducts.map(product => `
+                <div class="card">
+                    <h3>${product.name}</h3>
+                    <div class="info"><strong>Company:</strong> <span class="badge industry">${product.company_name}</span></div>
+                    <p class="info">${product.description}</p>
+                    <div class="info"><strong>Target:</strong> ${product.target_audience}</div>
+                    <div class="info"><strong>Pricing:</strong> <span class="badge pricing">${product.pricing_model}</span></div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="openUpdateProductModal('${product.id}')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteProduct('${product.id}', '${product.name.replace(/'/g, "\\'")}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Display Pagination
+            displayPagination('products', currentProductPage, totalPages, changeProductPage);
+        }
+
+        // Change Product Page
+        function changeProductPage(page) {
+            currentProductPage = page;
+            displayProducts();
+            document.getElementById('products-list').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Search Products
+        function searchProducts() {
+            const query = document.getElementById('product-search').value.toLowerCase();
+            filteredProducts = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query) ||
+                product.description.toLowerCase().includes(query) ||
+                product.pricing_model.toLowerCase().includes(query)
+            );
+            currentProductPage = 1;
+            displayProducts();
+        }
+
+        // Display Pagination
+        function displayPagination(type, currentPage, totalPages, changePageFunction) {
+            const container = document.getElementById(`${type}-pagination`);
+            
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <button onclick="${changePageFunction.name}(1)" ${currentPage === 1 ? 'disabled' : ''}>First</button>
+                <button onclick="${changePageFunction.name}(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
+                <span class="page-info">Page ${currentPage} of ${totalPages}</span>
+                <button onclick="${changePageFunction.name}(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
+                <button onclick="${changePageFunction.name}(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>Last</button>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // View Company Details in Modal
+        async function viewCompanyDetails(companyId) {
+            const modal = document.getElementById('companyModal');
+            const modalBody = document.getElementById('modal-body-content');
+            
+            // Show modal with loading state
+            modal.classList.add('active');
+            modalBody.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading company details...
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_URL}/companies/${companyId}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const company = await response.json();
+                
+                // Update modal header
+                document.getElementById('modal-company-name').textContent = company.name;
+                
+                // Build modal content
+                let productsHtml = '';
+                if (company.products && company.products.length > 0) {
+                    productsHtml = company.products.map(product => `
+                        <div class="product-item">
+                            <h4>${product.name}</h4>
+                            <div class="product-detail">
+                                <strong>Description:</strong>
+                                ${product.description}
+                            </div>
+                            <div class="product-detail">
+                                <strong>Target Audience:</strong>
+                                ${product.target_audience}
+                            </div>
+                            <div class="product-detail">
+                                <strong>Key Features:</strong>
+                                <div class="product-features">${product.key_features}</div>
+                            </div>
+                            <div class="product-detail">
+                                <strong>Pricing Model:</strong>
+                                <span class="badge pricing">${product.pricing_model}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    productsHtml = '<p style="color: #b0b0b0;">No products available for this company.</p>';
+                }
+                
+                modalBody.innerHTML = `
+                    <div class="company-details">
+                        <div class="detail-row">
+                            <strong>Tagline:</strong>
+                            <span style="color: #81c784; font-style: italic;">${company.tagline}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Industry:</strong>
+                            <span class="badge industry">${company.industry}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Founded:</strong>
+                            ${company.founded_year}
+                        </div>
+                        <div class="detail-row">
+                            <strong>Employees:</strong>
+                            ${company.employee_count}
+                        </div>
+                        <div class="detail-row">
+                            <strong>Headquarters:</strong>
+                            ${company.headquarters}
+                        </div>
+                        ${company.website_url ? `
+                            <div class="detail-row">
+                                <strong>Website:</strong>
+                                ${company.website_url}
+                            </div>
+                        ` : ''}
+                        <div class="company-description">
+                            <strong style="color: #90caf9; display: block; margin-bottom: 10px;">Description:</strong>
+                            ${company.description}
+                        </div>
+                    </div>
+                    
+                    <div class="products-section">
+                        <h3>Products (${company.products.length})</h3>
+                        ${productsHtml}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading company details:', error);
+                modalBody.innerHTML = `
+                    <div class="error">
+                        Error loading company details: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('companyModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const companyModal = document.getElementById('companyModal');
+            const updateCompanyModal = document.getElementById('updateCompanyModal');
+            const updateProductModal = document.getElementById('updateProductModal');
+            
+            if (event.target === companyModal) {
+                closeModal();
+            }
+            if (event.target === updateCompanyModal) {
+                closeUpdateCompanyModal();
+            }
+            if (event.target === updateProductModal) {
+                closeUpdateProductModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeUpdateCompanyModal();
+                closeUpdateProductModal();
+            }
+        });
+
+        // Create Company
+        async function createCompany(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    
+    // Convert numeric fields
+    data.founded_year = parseInt(data.founded_year);
+    data.employee_count = parseInt(data.employee_count);
+    
+    // Fix: Handle empty website_url - don't include it if empty
+    if (!data.website_url || data.website_url.trim() === '') {
+        delete data.website_url;
+    }
+
+    console.log('Creating company with data:', data); // Debug log
+
+    try {
+        const response = await fetch(`${API_URL}/companies`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            document.getElementById('company-form-message').innerHTML = 
+                '<div class="success">Company created successfully!</div>';
+            event.target.reset();
+            setTimeout(() => {
+                document.getElementById('company-form-message').innerHTML = '';
+            }, 3000);
+        } else {
+            const error = await response.json();
+            console.error('Validation error:', error); // Debug log
+            document.getElementById('company-form-message').innerHTML = 
+                '<div class="error">Error: ' + JSON.stringify(error.detail) + '</div>';
+        }
+    } catch (error) {
+        document.getElementById('company-form-message').innerHTML = 
+            '<div class="error">Error: ' + error.message + '</div>';
+    }
+}
+
+        // Load Companies for Select
+        async function loadCompaniesForSelect() {
+            try {
+                const response = await fetch(`${API_URL}/companies?per_page=100`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                const companies = data.companies || [];
+                const select = document.getElementById('product-company-select');
+                select.innerHTML = '<option value="">Select a company</option>' +
+                    companies.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+            } catch (error) {
+                console.error('Error loading companies for select:', error);
+                const select = document.getElementById('product-company-select');
+                select.innerHTML = '<option value="">Error loading companies</option>';
+            }
+        }
+
+        // Create Product
+        async function createProduct(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch(`${API_URL}/products`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    document.getElementById('product-form-message').innerHTML = 
+                        '<div class="success">Product created successfully!</div>';
+                    event.target.reset();
+                    setTimeout(() => {
+                        document.getElementById('product-form-message').innerHTML = '';
+                    }, 3000);
+                } else {
+                    const error = await response.json();
+                    document.getElementById('product-form-message').innerHTML = 
+                        '<div class="error">Error: ' + error.detail + '</div>';
+                }
+            } catch (error) {
+                document.getElementById('product-form-message').innerHTML = 
+                    '<div class="error">Error: ' + error.message + '</div>';
+            }
+        }
+
+        // Delete Company
+        async function deleteCompany(id, name) {
+            if (!confirm(`Are you sure you want to delete "${name}"? This will also delete all associated products.`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/companies/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    alert('Company deleted successfully!');
+                    loadCompanies();
+                } else {
+                    const error = await response.json();
+                    alert('Error: ' + error.detail);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Delete Product
+        async function deleteProduct(id, name) {
+            if (!confirm(`Are you sure you want to delete "${name}"?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/products/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    alert('Product deleted successfully!');
+                    loadProducts();
+                } else {
+                    const error = await response.json();
+                    alert('Error: ' + error.detail);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Load Data
+        async function loadData() {
+            try {
+                const response = await fetch(`${API_URL}/load-data`, {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                alert(`Data loaded!\nCompanies: ${result.loaded}\nSkipped: ${result.skipped}`);
+                loadDashboard();
+            } catch (error) {
+                alert('Error loading data: ' + error.message);
+            }
+        }
+
+        // Update Company Submit
+        async function updateCompanySubmit(event) {
+            event.preventDefault();
+            console.log('Submitting company update...');
+            
+            const companyId = document.getElementById('update-company-id').value;
+            console.log('Company ID:', companyId);
+            
+            const data = {
+                name: document.getElementById('update-company-name').value,
+                tagline: document.getElementById('update-company-tagline').value,
+                description: document.getElementById('update-company-description').value,
+                industry: document.getElementById('update-company-industry').value,
+                founded_year: parseInt(document.getElementById('update-company-founded').value),
+                employee_count: parseInt(document.getElementById('update-company-employees').value),
+                headquarters: document.getElementById('update-company-headquarters').value,
+                website_url: document.getElementById('update-company-website').value || null
+            };
+            
+            console.log('Update data:', data);
+
+            try {
+                const response = await fetch(`${API_URL}/companies/${companyId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                console.log('Update response status:', response.status);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Update successful:', result);
+                    
+                    document.getElementById('update-company-message').innerHTML =
+                        '<div class="success">Company updated successfully!</div>';
+                    
+                    setTimeout(() => {
+                        closeUpdateCompanyModal();
+                        loadCompanies();
+                    }, 1500);
+                } else {
+                    const error = await response.json();
+                    console.error('Update failed:', error);
+                    document.getElementById('update-company-message').innerHTML =
+                        '<div class="error">Error: ' + error.detail + '</div>';
+                }
+            } catch (error) {
+                console.error('Update error:', error);
+                document.getElementById('update-company-message').innerHTML =
+                    '<div class="error">Error: ' + error.message + '</div>';
+            }
+        }
+
+        // Update Product Submit
+        async function updateProductSubmit(event) {
+            event.preventDefault();
+            console.log('Submitting product update...');
+            
+            const productId = document.getElementById('update-product-id').value;
+            console.log('Product ID:', productId);
+            
+            const data = {
+                name: document.getElementById('update-product-name').value,
+                description: document.getElementById('update-product-description').value,
+                target_audience: document.getElementById('update-product-audience').value,
+                key_features: document.getElementById('update-product-features').value,
+                pricing_model: document.getElementById('update-product-pricing').value
+            };
+            
+            console.log('Update data:', data);
+
+            try {
+                const response = await fetch(`${API_URL}/products/${productId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                console.log('Update response status:', response.status);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Update successful:', result);
+                    
+                    document.getElementById('update-product-message').innerHTML =
+                        '<div class="success">Product updated successfully!</div>';
+                    
+                    setTimeout(() => {
+                        closeUpdateProductModal();
+                        loadProducts();
+                    }, 1500);
+                } else {
+                    const error = await response.json();
+                    console.error('Update failed:', error);
+                    document.getElementById('update-product-message').innerHTML =
+                        '<div class="error">Error: ' + error.detail + '</div>';
+                }
+            } catch (error) {
+                console.error('Update error:', error);
+                document.getElementById('update-product-message').innerHTML =
+                    '<div class="error">Error: ' + error.message + '</div>';
+            }
+        }
+
+        // Delete All Companies
+        async function deleteAllCompanies() {
+            if (!confirm('Are you sure you want to delete ALL companies? This will also delete ALL products and cannot be undone!')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/companies?per_page=100`);
+                const data = await response.json();
+                const companies = data.companies || [];
+
+                let deleted = 0;
+                let errors = 0;
+
+                for (const company of companies) {
+                    try {
+                        const delResponse = await fetch(`${API_URL}/companies/${company.id}`, {
+                            method: 'DELETE'
+                        });
+                        if (delResponse.ok) {
+                            deleted++;
+                        } else {
+                            errors++;
+                        }
+                    } catch (e) {
+                        errors++;
+                    }
+                }
+
+                alert(`Deleted ${deleted} companies. Errors: ${errors}`);
+                loadCompanies();
+                loadDashboard();
+            } catch (error) {
+                alert('Error deleting companies: ' + error.message);
+            }
+        }
+
+        // Delete All Products
+        async function deleteAllProducts() {
+            if (!confirm('Are you sure you want to delete ALL products? This cannot be undone!')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/products?per_page=100`);
+                const data = await response.json();
+                const products = data.products || [];
+
+                let deleted = 0;
+                let errors = 0;
+
+                for (const product of products) {
+                    try {
+                        const delResponse = await fetch(`${API_URL}/products/${product.id}`, {
+                            method: 'DELETE'
+                        });
+                        if (delResponse.ok) {
+                            deleted++;
+                        } else {
+                            errors++;
+                        }
+                    } catch (e) {
+                        errors++;
+                    }
+                }
+
+                alert(`Deleted ${deleted} products. Errors: ${errors}`);
+                loadProducts();
+                loadDashboard();
+            } catch (error) {
+                alert('Error deleting products: ' + error.message);
+            }
+        }
+
+        // View Company Details in Modal
+        async function viewCompanyDetails(companyId) {
+            const modal = document.getElementById('companyModal');
+            const modalBody = document.getElementById('modal-body-content');
+            
+            modal.classList.add('active');
+            modalBody.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading company details...
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_URL}/companies/${companyId}`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const company = await response.json();
+                
+                document.getElementById('modal-company-name').textContent = company.name;
+                
+                let productsHtml = '';
+                if (company.products && company.products.length > 0) {
+                    productsHtml = company.products.map(product => `
+                        <div class="product-item">
+                            <h4>${product.name}</h4>
+                            <div class="product-detail">
+                                <strong>Description:</strong>
+                                ${product.description}
+                            </div>
+                            <div class="product-detail">
+                                <strong>Target Audience:</strong>
+                                ${product.target_audience}
+                            </div>
+                            <div class="product-detail">
+                                <strong>Key Features:</strong>
+                                <div class="product-features">${product.key_features}</div>
+                            </div>
+                            <div class="product-detail">
+                                <strong>Pricing Model:</strong>
+                                <span class="badge pricing">${product.pricing_model}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    productsHtml = '<p style="color: #b0b0b0;">No products available for this company.</p>';
+                }
+                
+                modalBody.innerHTML = `
+                    <div class="company-details">
+                        <div class="detail-row">
+                            <strong>Tagline:</strong>
+                            <span style="color: #81c784; font-style: italic;">${company.tagline}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Industry:</strong>
+                            <span class="badge industry">${company.industry}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Founded:</strong>
+                            ${company.founded_year}
+                        </div>
+                        <div class="detail-row">
+                            <strong>Employees:</strong>
+                            ${company.employee_count}
+                        </div>
+                        <div class="detail-row">
+                            <strong>Headquarters:</strong>
+                            ${company.headquarters}
+                        </div>
+                        ${company.website_url ? `
+                            <div class="detail-row">
+                                <strong>Website:</strong>
+                                ${company.website_url}
+                            </div>
+                        ` : ''}
+                        <div class="company-description">
+                            <strong style="color: #90caf9; display: block; margin-bottom: 10px;">Description:</strong>
+                            ${company.description}
+                        </div>
+                    </div>
+                    
+                    <div class="products-section">
+                        <h3>Products (${company.products.length})</h3>
+                        ${productsHtml}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading company details:', error);
+                modalBody.innerHTML = `
+                    <div class="error">
+                        Error loading company details: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('companyModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('companyModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize on page load
+        window.onload = function() {
+            loadDashboard();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+{
+  "companies": [
+    {
+      "name": "CareLink Solutions",
+      "tagline": "Streamlining healthcare delivery through integrated digital solutions",
+      "description": "CareLink Solutions develops practical healthcare technology platforms that help small to mid-sized medical practices improve patient care and operational efficiency. Founded by former healthcare administrators who understood the daily challenges facing independent clinics, the company focuses on creating user-friendly tools that don't require extensive technical expertise to implement.\n\nOur solutions are designed specifically for practices with limited IT resources, offering reliable telemedicine capabilities, patient monitoring tools, and streamlined record management. We serve over 340 healthcare providers across North America, helping them adapt to modern healthcare delivery while maintaining the personal touch that defines quality patient care.",
+      "industry": "HealthTech",
+      "founded_year": 2020,
+      "employee_count": 28,
+      "headquarters": "Austin, USA",
+      "website_url": "www.carelinksolutions.com",
+      "products": [
+        {
+          "name": "VirtualCare Connect",
+          "description": "A telemedicine platform designed for small to mid-sized medical practices. Offers secure video consultations, appointment scheduling, and basic patient record integration without requiring complex IT infrastructure.",
+          "target_audience": "Independent medical practices with 5-25 providers",
+          "key_features": "• HIPAA-compliant video consultations\n• Integrated appointment scheduling\n• Basic EHR connectivity\n• Mobile app for patients\n• Automated appointment reminders",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "PatientTrack Pro",
+          "description": "A remote patient monitoring system that tracks vital signs and medication adherence for chronic disease management. Integrates with common consumer health devices and provides alerts for healthcare providers.",
+          "target_audience": "Primary care clinics managing chronic disease patients",
+          "key_features": "• Blood pressure and glucose monitoring\n• Medication reminder system\n• Provider dashboard with alerts\n• Patient mobile app\n• Basic analytics and reporting",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "MedFile Manager",
+          "description": "A cloud-based medical records management system tailored for smaller practices transitioning from paper records. Focuses on ease of use and affordable implementation for practices with limited technical resources.",
+          "target_audience": "Small medical practices with 2-10 providers transitioning to digital records",
+          "key_features": "• Document scanning and storage\n• Basic search and retrieval\n• Appointment history tracking\n• Secure patient portal access\n• Simple billing integration",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "DiagnosticAssist",
+          "description": "An AI-powered diagnostic support tool that helps primary care physicians identify potential conditions based on symptoms and patient history. Provides evidence-based suggestions while maintaining physician decision-making authority.",
+          "target_audience": "Primary care physicians in solo or small group practices",
+          "key_features": "• Symptom-based diagnostic suggestions\n• Drug interaction checking\n• Clinical decision support\n• Integration with common EHR systems\n• Evidence-based treatment recommendations",
+          "pricing_model": "Subscription"
+        }
+      ]
+    },
+    {
+      "name": "FlowPay Technologies",
+      "tagline": "Streamlined payment solutions for growing businesses",
+      "description": "FlowPay Technologies is a financial technology company that provides payment processing and financial management tools for small to medium-sized businesses. Founded to address the complexity and high costs of traditional payment systems, FlowPay offers integrated solutions that combine payment processing, invoicing, and basic financial analytics in user-friendly platforms.\n\nThe company focuses on serving businesses that need reliable payment infrastructure without the overhead of enterprise-level systems. FlowPay's solutions are designed to be implemented quickly and scaled as businesses grow, making modern payment technology accessible to companies that previously relied on outdated or fragmented financial tools.",
+      "industry": "FinTech",
+      "founded_year": 2021,
+      "employee_count": 34,
+      "headquarters": "Austin, United States",
+      "website_url": "www.flowpaytech.com",
+      "products": [
+        {
+          "name": "PayStream Pro",
+          "description": "A comprehensive payment processing platform that handles online and in-person transactions with integrated invoicing capabilities. The system provides real-time transaction monitoring and automated reconciliation features for businesses processing moderate transaction volumes.",
+          "target_audience": "SMBs with 15-100 employees in retail and service industries",
+          "key_features": "• Multi-channel payment processing (online, mobile, in-store)\n• Automated invoice generation and tracking\n• Real-time transaction dashboard\n• Basic fraud detection and prevention\n• Integration with popular accounting software",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "CashFlow Insights",
+          "description": "A financial analytics tool that aggregates data from multiple business accounts and payment sources to provide cash flow forecasting and spending analysis. It helps business owners understand their financial patterns and make informed decisions about expenses and investments.",
+          "target_audience": "Small business owners and financial managers at companies with $1M-$10M annual revenue",
+          "key_features": "• Multi-account cash flow tracking\n• 30-90 day cash flow forecasting\n• Expense categorization and analysis\n• Monthly financial health reports\n• Budget vs actual spending comparisons",
+          "pricing_model": "Freemium"
+        },
+        {
+          "name": "QuickSettle",
+          "description": "A B2B payment solution that facilitates faster settlements between businesses through automated payment scheduling and approval workflows. The platform reduces payment delays and improves cash flow for companies that rely on timely payments from business customers.",
+          "target_audience": "Mid-market businesses with 50-200 employees that handle B2B transactions",
+          "key_features": "• Automated payment scheduling and reminders\n• Multi-level approval workflows\n• ACH and wire transfer processing\n• Payment status tracking and notifications\n• Integration with ERP and accounting systems",
+          "pricing_model": "Enterprise"
+        }
+      ]
+    },
+    {
+      "name": "MedFlow Systems",
+      "tagline": "Streamlining healthcare workflows with intelligent automation",
+      "description": "MedFlow Systems develops practical software solutions for small to mid-sized healthcare practices looking to modernize their operations. Founded in 2020, the company focuses on reducing administrative burden through user-friendly automation tools that integrate seamlessly with existing workflows.\n\nOur platform helps medical practices manage patient communications, streamline appointment scheduling, and maintain organized health records. We serve over 450 healthcare providers across North America, from solo practitioners to multi-location clinics. The company has grown steadily by prioritizing ease of implementation and responsive customer support, making healthcare technology accessible to practices without dedicated IT resources.",
+      "industry": "HealthTech",
+      "founded_year": 2020,
+      "employee_count": 38,
+      "headquarters": "Austin, USA",
+      "website_url": "www.medflowsystems.com",
+      "products": [
+        {
+          "name": "ClinicalSync",
+          "description": "A comprehensive patient management system that combines scheduling, documentation, and billing in one platform. Designed specifically for small medical practices that need to digitize their workflows without complex implementation.",
+          "target_audience": "Small medical practices with 3-25 staff members",
+          "key_features": "• Automated appointment scheduling and reminders\n• Digital patient intake forms\n• Basic electronic health records\n• Insurance verification tools\n• Simple billing and payment processing",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "TeleHealth Bridge",
+          "description": "A straightforward video consultation platform that integrates with existing practice management systems. Offers secure video calls, basic screen sharing, and appointment integration for routine consultations.",
+          "target_audience": "Primary care clinics and specialists with 5-50 providers",
+          "key_features": "• HIPAA-compliant video consultations\n• Calendar integration\n• Digital prescription management\n• Patient waiting room feature\n• Session recording for documentation",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "HealthMetrics Dashboard",
+          "description": "A patient monitoring tool that aggregates data from common health devices and presents it in an easy-to-read format for healthcare providers. Focuses on chronic disease management and preventive care tracking.",
+          "target_audience": "Family medicine practices and chronic care clinics",
+          "key_features": "• Integration with popular fitness trackers\n• Blood pressure and glucose monitoring\n• Medication adherence tracking\n• Customizable health alerts\n• Patient progress reports",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "DocuMed Archive",
+          "description": "A cloud-based medical records storage and retrieval system that helps practices transition from paper files to digital storage. Includes basic search functionality and secure sharing capabilities.",
+          "target_audience": "Small to mid-sized practices transitioning to digital records",
+          "key_features": "• Secure document scanning and storage\n• Basic search and categorization\n• Patient record sharing between providers\n• Automated backup and compliance\n• Mobile access for authorized users",
+          "pricing_model": "Subscription"
+        }
+      ]
+    },
+    {
+      "name": "ShopLink Commerce",
+      "tagline": "Streamlined marketplace solutions for growing businesses",
+      "description": "ShopLink Commerce provides integrated e-commerce tools designed for small to medium-sized retailers looking to expand their online presence. Founded to address the complexity of managing multiple sales channels, the company offers a unified platform that combines marketplace management, inventory tracking, and customer insights.\n\nThe platform serves over 850 businesses across North America, helping them streamline operations and grow their digital sales. ShopLink focuses on practical solutions that reduce administrative overhead while providing the analytics needed to make informed business decisions.",
+      "industry": "E-commerce",
+      "founded_year": 2020,
+      "employee_count": 47,
+      "headquarters": "Austin, Texas",
+      "website_url": "www.shoplinkcommerce.com",
+      "products": [
+        {
+          "name": "MarketPlace Central",
+          "description": "A unified dashboard that manages product listings, orders, and inventory across multiple online marketplaces. Automates routine tasks like price updates and stock synchronization while providing real-time visibility into sales performance.",
+          "target_audience": "SMBs with 10-75 employees selling on multiple platforms",
+          "key_features": "• Multi-channel listing management\n• Automated inventory synchronization\n• Order consolidation dashboard\n• Price optimization tools\n• Performance analytics by channel",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "StockSense Pro",
+          "description": "An inventory management system that tracks stock levels, predicts demand, and automates reordering processes. Integrates with existing POS systems and provides alerts for low stock and seasonal trends.",
+          "target_audience": "Retailers with 25-100 SKUs and seasonal inventory needs",
+          "key_features": "• Real-time inventory tracking\n• Demand forecasting algorithms\n• Automated reorder points\n• Supplier management tools\n• Low stock alerts and reporting",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "DeliveryRoute Optimizer",
+          "description": "A logistics solution that optimizes delivery routes, tracks shipments, and manages last-mile delivery operations. Helps businesses reduce shipping costs while improving delivery times and customer satisfaction.",
+          "target_audience": "Local retailers and small delivery services with 5-30 daily routes",
+          "key_features": "• Route optimization algorithms\n• Real-time delivery tracking\n• Driver mobile app integration\n• Delivery time predictions\n• Cost analysis and reporting",
+          "pricing_model": "Freemium"
+        }
+      ]
+    },
+    {
+      "name": "VitalConnect Health",
+      "tagline": "Streamlined healthcare technology for modern medical practices",
+      "description": "VitalConnect Health provides integrated healthcare technology solutions designed specifically for small to medium-sized medical practices. Founded in 2020, the company focuses on simplifying patient management, remote monitoring, and clinical workflows through user-friendly software platforms. Their suite of products helps healthcare providers improve patient outcomes while reducing administrative burden and operational costs. VitalConnect serves over 450 medical practices across North America, from independent clinics to multi-location healthcare groups.",
+      "industry": "HealthTech",
+      "founded_year": 2020,
+      "employee_count": 67,
+      "headquarters": "Austin, USA",
+      "website_url": "www.vitalconnecthealth.com",
+      "products": [
+        {
+          "name": "CareSync Portal",
+          "description": "A comprehensive patient management platform that integrates appointment scheduling, electronic health records, and billing functionality. Designed for small to medium medical practices seeking to digitize their operations.",
+          "target_audience": "Medical practices with 5-50 providers",
+          "key_features": "• Integrated EHR and practice management system\n• Online appointment booking and reminders\n• Insurance verification and claims processing\n• Patient portal for secure messaging\n• Automated billing and payment processing",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "RemoteVitals Monitor",
+          "description": "A remote patient monitoring solution that tracks vital signs and health metrics for chronic disease management. Connects wearable devices with clinical dashboards for continuous patient oversight.",
+          "target_audience": "Clinics managing chronic care patients",
+          "key_features": "• Real-time vital sign monitoring\n• Wearable device integration\n• Automated alert system for abnormal readings\n• Patient compliance tracking\n• Clinical dashboard with trend analysis",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "TeleConsult Express",
+          "description": "A straightforward telemedicine platform enabling secure video consultations between healthcare providers and patients. Features HIPAA-compliant video calls with integrated prescription management.",
+          "target_audience": "Independent practitioners and small clinics",
+          "key_features": "• HIPAA-compliant video consultations\n• Digital prescription management\n• Session recording and documentation\n• Multi-device compatibility\n• Insurance billing integration",
+          "pricing_model": "Freemium"
+        },
+        {
+          "name": "MedInsight Analytics",
+          "description": "A clinical decision support tool that analyzes patient data to provide diagnostic assistance and treatment recommendations. Uses machine learning to identify patterns in patient symptoms and medical history.",
+          "target_audience": "Primary care physicians and specialists",
+          "key_features": "• AI-powered diagnostic suggestions\n• Drug interaction and allergy alerts\n• Treatment protocol recommendations\n• Patient risk assessment scoring\n• Evidence-based clinical guidelines integration",
+          "pricing_model": "Enterprise"
+        }
+      ]
+    },
+    {
+      "name": "ShelfSync Technologies",
+      "tagline": "Smart inventory and marketplace management for growing online retailers",
+      "description": "ShelfSync Technologies provides integrated e-commerce solutions for small to mid-sized online retailers looking to scale their operations efficiently. Founded to address the common pain points of inventory tracking, multi-channel selling, and customer insights, the company serves over 850 active merchants across North America.\n\nThe platform combines real-time inventory management with marketplace integration and basic analytics, helping retailers maintain accurate stock levels while selling across multiple channels. ShelfSync focuses on practical, easy-to-implement solutions that don't require extensive technical expertise, making advanced e-commerce tools accessible to smaller businesses.",
+      "industry": "E-commerce",
+      "founded_year": 2020,
+      "employee_count": 47,
+      "headquarters": "Austin, Texas",
+      "website_url": "www.shelfsync.com",
+      "products": [
+        {
+          "name": "MultiStore Hub",
+          "description": "Centralized dashboard for managing inventory and orders across multiple sales channels including Amazon, eBay, Shopify, and WooCommerce. Automatically syncs stock levels and prevents overselling while providing unified order processing.",
+          "target_audience": "SMBs with 10-75 employees selling on multiple platforms",
+          "key_features": "• Real-time inventory synchronization across channels\n• Unified order management dashboard\n• Automated stock level alerts and reorder points\n• Basic sales reporting and trend analysis\n• Integration with 15+ major e-commerce platforms",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "StockSense Analytics",
+          "description": "Inventory analytics tool that helps retailers optimize their product mix and purchasing decisions. Tracks sales velocity, seasonal trends, and provides recommendations for stock levels and product performance.",
+          "target_audience": "Online retailers with $500K-$5M annual revenue",
+          "key_features": "• Sales velocity tracking and forecasting\n• Seasonal demand pattern analysis\n• Slow-moving inventory identification\n• Automated reorder suggestions\n• Profit margin analysis by product category",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "LocalDrop Network",
+          "description": "Regional delivery coordination service that connects online retailers with local courier services and pickup points. Focuses on same-day and next-day delivery options for urban and suburban areas.",
+          "target_audience": "Regional e-commerce businesses serving metropolitan areas",
+          "key_features": "• Network of verified local courier partners\n• Real-time delivery tracking and notifications\n• Flexible pickup point locations\n• Rate comparison across delivery options\n• Customer delivery preference management",
+          "pricing_model": "Enterprise"
+        }
+      ]
+    },
+    {
+      "name": "TradeFlow Systems",
+      "tagline": "Streamlined commerce solutions for growing businesses",
+      "description": "TradeFlow Systems provides integrated e-commerce infrastructure for small to mid-sized retailers looking to scale their online operations. Founded in 2020, the company focuses on simplifying the complex aspects of digital commerce through unified inventory management, automated order processing, and data-driven insights.\n\nThe platform serves over 850 businesses across North America, helping them manage multi-channel sales, optimize fulfillment processes, and understand customer behavior. TradeFlow's solutions are designed for businesses that have outgrown basic e-commerce tools but aren't ready for enterprise-level complexity.",
+      "industry": "E-commerce",
+      "founded_year": 2020,
+      "employee_count": 67,
+      "headquarters": "Austin, USA",
+      "website_url": "www.tradeflowsystems.com",
+      "products": [
+        {
+          "name": "UnifiedCart Pro",
+          "description": "A comprehensive marketplace platform that connects multiple sales channels into a single dashboard. Handles product listings, order management, and customer communications across various online marketplaces and direct sales channels.",
+          "target_audience": "SMBs with 20-100 employees selling across multiple channels",
+          "key_features": "• Multi-channel inventory synchronization\n• Automated order routing and fulfillment\n• Unified customer communication hub\n• Real-time sales performance tracking\n• Integration with 15+ major marketplaces",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "WarehouseSync",
+          "description": "An inventory management system designed for growing retailers with complex stock requirements. Provides real-time tracking, automated reorder points, and warehouse optimization tools.",
+          "target_audience": "Mid-market retailers with 50-150 employees and multiple locations",
+          "key_features": "• Real-time stock level monitoring\n• Automated purchase order generation\n• Multi-location inventory tracking\n• Barcode scanning integration\n• Demand forecasting algorithms",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "RouteOptimizer",
+          "description": "A logistics solution that streamlines delivery operations for local and regional retailers. Optimizes delivery routes, manages driver schedules, and provides customer tracking capabilities.",
+          "target_audience": "Local retailers and small delivery services with 10-75 employees",
+          "key_features": "• AI-powered route optimization\n• Driver mobile app with GPS tracking\n• Customer delivery notifications\n• Proof of delivery capture\n• Fleet performance analytics",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "RetailInsights",
+          "description": "A customer analytics platform that aggregates data from multiple touchpoints to provide actionable business intelligence. Focuses on purchase patterns, customer lifetime value, and inventory performance.",
+          "target_audience": "E-commerce businesses with 25-120 employees seeking data-driven growth",
+          "key_features": "• Customer segmentation and profiling\n• Sales trend analysis and reporting\n• Inventory turnover optimization\n• Marketing campaign performance tracking\n• Customizable business intelligence dashboards",
+          "pricing_model": "Freemium"
+        }
+      ]
+    },
+    {
+      "name": "TaskBridge Solutions",
+      "tagline": "Streamline workflows, automate processes, boost team productivity",
+      "description": "TaskBridge Solutions develops intuitive business automation tools designed for growing companies that need to scale their operations efficiently. Founded by former operations managers who experienced firsthand the challenges of manual processes and disconnected systems, the company focuses on creating practical solutions that teams can implement quickly.\n\nThe platform serves over 850 customers across various industries, from marketing agencies to manufacturing companies. TaskBridge emphasizes ease of use and rapid deployment, with most customers seeing measurable productivity improvements within their first month of implementation.",
+      "industry": "SaaS",
+      "founded_year": 2020,
+      "employee_count": 42,
+      "headquarters": "Austin, USA",
+      "website_url": "www.taskbridge.com",
+      "products": [
+        {
+          "name": "WorkflowPro",
+          "description": "A visual workflow automation platform that helps teams eliminate repetitive tasks and standardize processes. Users can create custom workflows using drag-and-drop tools without requiring technical expertise.",
+          "target_audience": "SMBs with 25-200 employees",
+          "key_features": "• Drag-and-drop workflow builder\n• Integration with 50+ popular business apps\n• Custom approval chains and notifications\n• Real-time process tracking and analytics\n• Template library for common workflows",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "TeamSync Hub",
+          "description": "A centralized collaboration platform that combines task management, file sharing, and team communication in one interface. Designed specifically for remote and hybrid teams managing multiple projects simultaneously.",
+          "target_audience": "Remote teams and agencies with 10-100 employees",
+          "key_features": "• Unified inbox for all team communications\n• Project timelines with dependency tracking\n• Shared workspace with version control\n• Time tracking and resource allocation\n• Client portal for external collaboration",
+          "pricing_model": "Freemium"
+        },
+        {
+          "name": "DataConnect Bridge",
+          "description": "An integration platform that connects disparate business systems and automates data synchronization. Helps companies maintain data consistency across their sales, marketing, and operational tools.",
+          "target_audience": "Mid-market companies with 50-300 employees",
+          "key_features": "• Pre-built connectors for 100+ business applications\n• Real-time and scheduled data synchronization\n• Data mapping and transformation tools\n• Error monitoring and automatic retry logic\n• Compliance and security audit trails",
+          "pricing_model": "Enterprise"
+        },
+        {
+          "name": "ClientFlow CRM",
+          "description": "A straightforward customer relationship management system built for service-based businesses. Focuses on lead tracking, client communication history, and automated follow-up sequences without overwhelming complexity.",
+          "target_audience": "Service businesses and consultancies with 5-50 employees",
+          "key_features": "• Lead capture and qualification scoring\n• Automated email sequences and reminders\n• Client interaction timeline and notes\n• Pipeline reporting and forecasting\n• Mobile app for field teams",
+          "pricing_model": "Subscription"
+        }
+      ]
+    },
+    {
+      "name": "StreamlineOps",
+      "tagline": "Simplify operations, amplify results",
+      "description": "StreamlineOps provides integrated business automation tools designed to help growing companies optimize their daily operations. Our platform connects project management, customer relationships, and workflow automation in one unified system. Founded by former operations managers who understood the pain of juggling multiple disconnected tools, we focus on practical solutions that actually get used by teams.\n\nWe serve over 450 businesses across North America, from small agencies to mid-market companies looking to scale efficiently. Our straightforward approach to business automation helps teams reduce manual work and improve collaboration without overwhelming complexity.",
+      "industry": "SaaS",
+      "founded_year": 2021,
+      "employee_count": 28,
+      "headquarters": "Austin, USA",
+      "website_url": "www.streamlineops.com",
+      "products": [
+        {
+          "name": "ProjectFlow Hub",
+          "description": "A project management platform that combines task tracking, resource allocation, and team communication. Designed for teams that need more structure than basic tools provide but don't want enterprise-level complexity.",
+          "target_audience": "Growing companies with 15-100 employees",
+          "key_features": "• Gantt charts with drag-and-drop scheduling\n• Resource capacity planning and allocation\n• Built-in time tracking and reporting\n• Custom project templates and workflows\n• Team collaboration with file sharing",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "CustomerSync CRM",
+          "description": "A customer relationship management system built for service-based businesses and small manufacturers. Tracks leads, manages customer interactions, and automates follow-up sequences without requiring extensive setup.",
+          "target_audience": "Service businesses and small manufacturers with 10-75 employees",
+          "key_features": "• Lead scoring and pipeline management\n• Automated email sequences and reminders\n• Customer interaction history and notes\n• Integration with popular email platforms\n• Sales reporting and forecasting tools",
+          "pricing_model": "Freemium"
+        },
+        {
+          "name": "ProcessBot Automation",
+          "description": "Workflow automation tool that connects common business applications and automates repetitive tasks. Users can create automated workflows using a visual builder without needing technical expertise.",
+          "target_audience": "SMBs with 20-150 employees looking to reduce manual work",
+          "key_features": "• Visual workflow builder with templates\n• Pre-built integrations with 200+ apps\n• Automated data entry and file processing\n• Conditional logic and approval workflows\n• Activity monitoring and error alerts",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "TeamSpace Collaboration",
+          "description": "Digital workspace that combines document sharing, team messaging, and meeting coordination. Provides remote and hybrid teams with a central hub for daily collaboration and information sharing.",
+          "target_audience": "Remote and hybrid teams in companies with 25-200 employees",
+          "key_features": "• Shared document libraries with version control\n• Team messaging with organized channels\n• Meeting scheduling with calendar integration\n• Screen sharing and video conferencing\n• Mobile app for on-the-go access",
+          "pricing_model": "Subscription"
+        }
+      ]
+    },
+    {
+      "name": "PulseCore Health",
+      "tagline": "Streamlined patient monitoring and telehealth solutions for modern clinics",
+      "description": "PulseCore Health develops integrated healthcare technology solutions designed to help small to medium-sized medical practices modernize their patient care delivery. Our platform combines remote patient monitoring, telehealth capabilities, and clinical workflow management in a single, user-friendly system.\n\nFounded by former healthcare administrators who understood the challenges facing independent practices, we focus on practical solutions that improve patient outcomes while reducing administrative burden. Our tools are designed to be implemented quickly without extensive IT support, making advanced healthcare technology accessible to practices of all sizes.",
+      "industry": "HealthTech",
+      "founded_year": 2020,
+      "employee_count": 34,
+      "headquarters": "Austin, USA",
+      "website_url": "www.pulsecorehealth.com",
+      "products": [
+        {
+          "name": "ClinicalHub Pro",
+          "description": "A comprehensive practice management platform that integrates appointment scheduling, patient records, and billing workflows. Designed specifically for independent clinics and small healthcare practices looking to digitize their operations.",
+          "target_audience": "Independent medical practices with 5-50 providers",
+          "key_features": "• Integrated appointment scheduling and patient portal\n• HIPAA-compliant electronic health records\n• Automated billing and insurance claim processing\n• Real-time practice analytics and reporting\n• Mobile app for providers and patients",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "VirtualCare Connect",
+          "description": "A telehealth platform enabling secure video consultations between patients and healthcare providers. Features waiting room functionality, prescription management, and seamless integration with existing practice management systems.",
+          "target_audience": "Healthcare practices transitioning to hybrid care models",
+          "key_features": "• HD video consultations with recording capabilities\n• Digital prescription and referral management\n• Insurance verification and co-pay collection\n• Multi-device compatibility and mobile apps\n• Integration with major EHR systems",
+          "pricing_model": "Subscription"
+        },
+        {
+          "name": "WellnessTracker Suite",
+          "description": "Remote patient monitoring solution that connects wearable devices and home health monitors to clinical dashboards. Allows healthcare providers to track patient vitals and receive alerts for concerning trends between visits.",
+          "target_audience": "Chronic care management programs and primary care practices",
+          "key_features": "• Compatible with popular fitness trackers and medical devices\n• Customizable patient health dashboards\n• Automated alert system for abnormal readings\n• Patient engagement tools and health goal tracking\n• Clinical decision support and trend analysis",
+          "pricing_model": "Enterprise"
+        },
+        {
+          "name": "DiagnosticAssist AI",
+          "description": "An AI-powered clinical decision support tool that analyzes patient symptoms, lab results, and medical history to suggest potential diagnoses and treatment options. Designed to assist healthcare providers in making more informed clinical decisions.",
+          "target_audience": "Primary care physicians and nurse practitioners",
+          "key_features": "• Evidence-based diagnostic suggestions and treatment protocols\n• Integration with lab systems and imaging platforms\n• Drug interaction checker and dosing recommendations\n• Clinical guideline updates and medical literature references\n• Customizable alerts for patient risk factors",
+          "pricing_model": "Subscription"
+        }
+      ]
+    }
+  ]
+}
